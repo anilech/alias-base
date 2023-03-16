@@ -1,0 +1,14 @@
+dn: cn=alias-base,cn=plugins,cn=config
+objectclass: top
+objectclass: nsSlapdPlugin
+objectclass: extensibleObject
+cn: alias-base
+nsslapd-pluginpath: libalias-base-plugin
+nsslapd-plugininitfunc: alias_base_init
+nsslapd-plugintype: preoperation
+nsslapd-pluginenabled: on
+nsslapd-pluginPrecedence: 1
+nsslapd-pluginDescription: alias plugin [base search only]
+nsslapd-pluginVendor: anilech
+nsslapd-pluginVersion: 0.1
+nsslapd-pluginId:alias-base
