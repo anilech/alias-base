@@ -110,8 +110,8 @@ int alias_base_srch( Slapi_PBlock *pb ) {
   if ( i != LDAP_SCOPE_BASE ) return( 0 );
 
   // deref must be enabled
-//  if ( slapi_pblock_get( pb, SLAPI_SEARCH_DEREF, &i ) != 0 ) return( 0 );
-//  if ( i != LDAP_DEREF_FINDING && i != LDAP_DEREF_ALWAYS) return( 0 );
+  if ( slapi_pblock_get( pb, SLAPI_SEARCH_DEREF, &i ) != 0 ) return( 0 );
+  if ( i != LDAP_DEREF_FINDING && i != LDAP_DEREF_ALWAYS) return( 0 );
   
   // dn should be provided
   if ( slapi_pblock_get( pb, SLAPI_SEARCH_TARGET, &s ) != 0 || s == NULL || strlen(s)==0 ) return(0);
