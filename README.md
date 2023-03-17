@@ -64,7 +64,7 @@ dn: cn=MYOLDDB,cn=OracleContext,dc=world
 dn: cn=MYDB,cn=OracleContext,dc=world
 orclNetDescString: (DESCRIPTION=...
 ```
-
+> :white_check_mark: orclNetDescString is here and dn is MYDB
 <tr><td colspan=2>
 
 `tnsping MYDB`
