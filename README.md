@@ -57,7 +57,7 @@ orclNetDescString: (DESCRIPTION=...
 ```
 dn: cn=MYOLDDB,cn=OracleContext,dc=world
 ```
-> :grey_exclamation: orclNetDescString not returned
+> :warning: orclNetDescString not returned
 <td>
 
 ```
@@ -102,7 +102,7 @@ c:\...\OraCli193_64\network\admin\sqlnet.ora
 
 TNS-03505: Failed to resolve name
 ```
-> :grey_exclamation: The client throws TNS-03505
+> :warning: The client throws TNS-03505
 <td>
 
 ```
