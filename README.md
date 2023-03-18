@@ -3,6 +3,28 @@
 
 The dereference of aliases is unfortunately [not supported](https://github.com/389ds/389-ds-base/issues/152) by the [389ds ldap server](https://www.port389.org/). Therefore here is a small [plugin](https://github.com/anilech/alias-base) which resolves aliases during **base** search. Subtree and onelevel searches are not supported.
 
+## Compiling
+```
+yum install 389-ds-base-devel
+make
+```
+  
+## Installing
+```
+cp libalias-base-plugin.so /usr/lib64/dirsrv/plugins
+chown root:root /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
+chmod 755 /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
+ldapadd -H ldap://ldapserver -D "cn=Directory Manager" -W -f alias-base.ldif
+systemctl restart dirsrv@ldapserver
+```
+
+## Removing
+```
+ldapdelete -H ldap://ldapserver -D "cn=Directory Manager" -W "cn=alias-base,cn=plugins,cn=config"
+systemctl restart dirsrv@ldapserver
+rm /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
+```
+
 ## Why
 Consider you have the Oracle database MYDB, and you keep your tnsnames in the LDAP:
 
@@ -115,25 +137,3 @@ OK (20 msec)
 ```
 
 </table>
-
-## Compiling
-```
-yum install 389-ds-base-devel
-make
-```
-  
-## Installing
-```
-cp libalias-base-plugin.so /usr/lib64/dirsrv/plugins
-chown root:root /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
-chmod 755 /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
-ldapadd -H ldap://ldapserver -D "cn=Directory Manager" -W -f alias-base.ldif
-systemctl restart dirsrv@ldapserver
-```
-
-## Removing
-```
-ldapdelete -H ldap://ldapserver -D "cn=Directory Manager" -W "cn=alias-base,cn=plugins,cn=config"
-systemctl restart dirsrv@ldapserver
-rm /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
-```
