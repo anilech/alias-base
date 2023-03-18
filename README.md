@@ -36,7 +36,7 @@ cn: MYDB
 orclNetDescString: (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=DBHOST)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=MYDB)))
 ```
 
-Now you have migrated the data from the other db MYOLDDB into this MYDB. On the clients side the tnsname MYOLDDB is still configured. To enable clients to connect to the new DB without changing their settings, you can create an [alias](https://www.rfc-editor.org/rfc/rfc4512#section-2.6) like this:
+Now you have migrated the data from the other db MYOLDDB into this MYDB. On the clients side the tnsname MYOLDDB is still configured. To enable clients to connect to the new DB without changing their settings, you can create an alias like this:
 
 ```
 dn: cn=MYOLDDB,cn=OracleContext,dc=world
@@ -137,3 +137,8 @@ OK (20 msec)
 ```
 
 </table>
+
+## Links
+* 389ds alias issue 389ds/389-ds-base#152
+* Plugin documentation https://access.redhat.com/sites/default/files/attachments/red_hat_directory_server-10-plug-in_guide-en-us.pdf
+* Alias RFC https://www.rfc-editor.org/rfc/rfc4512#section-2.6
