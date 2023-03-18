@@ -140,5 +140,5 @@ OK (20 msec)
 
 ## Links
 * 389ds alias issue 389ds/389-ds-base#152
-* Plugin documentation https://access.redhat.com/sites/default/files/attachments/red_hat_directory_server-10-plug-in_guide-en-us.pdf
+* Plugin docu https://access.redhat.com/sites/default/files/attachments/red_hat_directory_server-10-plug-in_guide-en-us.pdf
 * Alias RFC https://www.rfc-editor.org/rfc/rfc4512#section-2.6
