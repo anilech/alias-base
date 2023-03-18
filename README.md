@@ -1,7 +1,7 @@
 ![kdpv](https://anile.ch/assets/flachau.jpg)
 # alias-base
 
-The dereference of aliases is unfortunately [not supported](https://github.com/389ds/389-ds-base/issues/152) by [389ds ldap server](https://www.port389.org/). Therefore here is a small [plugin](https://github.com/anilech/alias-base) which resolves aliases during **base** search. Subtree and onelevel searches are not supported.
+The dereference of aliases is unfortunately [not supported](https://github.com/389ds/389-ds-base/issues/152) by the [389ds ldap server](https://www.port389.org/). Therefore here is a small [plugin](https://github.com/anilech/alias-base) which resolves aliases during **base** search. Subtree and onelevel searches are not supported.
 
 ## Why
 Consider you have the Oracle database MYDB, and you keep your tnsnames in the LDAP:
