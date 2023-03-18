@@ -116,3 +116,24 @@ OK (20 msec)
 
 </table>
 
+## compiling
+```
+yum install 389-ds-base-devel
+make
+```
+  
+## installing
+```
+cp libalias-base-plugin.so /usr/lib64/dirsrv/plugins
+chown root:root /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
+chmod 755 /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
+ldapadd -H ldap://ldapserver -D "cn=Directory Manager" -W -f alias-base.ldif
+systemctl restart dirsrv@ldapserver
+```
+
+## removing
+```
+ldapdelete -H ldap://ldapserver -D "cn=Directory Manager" -W "cn=alias-base,cn=plugins,cn=config"
+systemctl restart dirsrv@ldapserver
+rm /usr/lib64/dirsrv/plugins/libalias-base-plugin.so
+```
