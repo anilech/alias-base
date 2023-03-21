@@ -70,20 +70,11 @@ char *getNextDN(char *dn){
   slapi_search_internal_pb(pb);
 
   slapi_pblock_get(pb, SLAPI_PLUGIN_INTOP_RESULT, &rc);
-  if (rc != 0 ) {
-    slapi_free_search_results_internal(pb);
-    slapi_pblock_destroy(pb);
-    return NULL;
+  if (rc == 0) {
+    slapi_pblock_get(pb, SLAPI_PLUGIN_INTOP_SEARCH_ENTRIES, &e);
+    if (e != NULL && e[0] != NULL) v=slapi_entry_attr_get_charptr(e[0], a[0]); // slapi_ch_free_string() is required
   }
 
-  slapi_pblock_get(pb, SLAPI_PLUGIN_INTOP_SEARCH_ENTRIES, &e);
-  if (e == NULL || e[0] == NULL) {
-    slapi_free_search_results_internal(pb);
-    slapi_pblock_destroy(pb);
-    return NULL;
-  }
-
-  v=slapi_entry_attr_get_charptr(e[0], a[0]); // slapi_ch_free() is needed
   slapi_free_search_results_internal(pb);
   slapi_pblock_destroy(pb);
   return v;
