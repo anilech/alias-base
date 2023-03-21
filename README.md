@@ -1,4 +1,4 @@
-![kdpv](https://anile.ch/assets/flachau.jpg)
+![kdpv](https://anile.ch/assets/flachau_1200x300.jpg)
 # alias-base
 
 The dereference of aliases is unfortunately [not supported](#Links) by the [389ds ldap server](https://www.port389.org/). Therefore here is a small plugin which resolves aliases during **base** search. Subtree and onelevel searches are not supported.
