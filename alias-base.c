@@ -61,16 +61,13 @@ char *getNextDN(char *dn){
   int derefNever = LDAP_DEREF_NEVER;
   char *a[] = { "aliasedObjectName", NULL };
   char *v=NULL;
-  int rc = 0;
 
   // search dn to check if it is an alias
   pb = slapi_pblock_new();
   slapi_search_internal_set_pb(pb, dn, LDAP_SCOPE_BASE, MYALIASFILTER, a, 0, NULL, NULL, plugin_id, 0);
   slapi_pblock_set(pb, SLAPI_SEARCH_DEREF, (void *)&derefNever);
-  slapi_search_internal_pb(pb);
-
-  slapi_pblock_get(pb, SLAPI_PLUGIN_INTOP_RESULT, &rc);
-  if (rc == 0) {
+  
+  if (slapi_search_internal_pb(pb) == 0) {
     slapi_pblock_get(pb, SLAPI_PLUGIN_INTOP_SEARCH_ENTRIES, &e);
     if (e != NULL && e[0] != NULL) v=slapi_entry_attr_get_charptr(e[0], a[0]); // slapi_ch_free_string() is required
   }
